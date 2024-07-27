@@ -1,4 +1,4 @@
-{config, pkgs, ... }:
+{ config, pkgs, ... }:
 let username = "lzh";
 in {
   home = {
@@ -6,7 +6,8 @@ in {
     homeDirectory = "/home/${username}";
     stateVersion = "unstable";
   };
-  programs.home-manager.enable=true;
+  programs.home-manager.enable = true;
+
   programs.plasma = {
     enable = true;
     shortcuts = {
@@ -43,6 +44,7 @@ in {
         [ "Meta+L" "Screensaver,Meta+L" "Screensaver,锁定会话" ];
       "ksmserver"."Log Out" = "Ctrl+Alt+Del";
       "ksmserver"."Log Out Without Confirmation" = "none,,注销 (无需确认)";
+      "ksmserver"."LogOut" = "none,,注销";
       "ksmserver"."Reboot" = "none,,重启";
       "ksmserver"."Reboot Without Confirmation" = "none,,重启 (无需确认)";
       "ksmserver"."Shut Down" = "none,,关机";
@@ -230,6 +232,8 @@ in {
       "org_kde_powerdevil"."Turn Off Screen" = [ ];
       "org_kde_powerdevil"."powerProfile" =
         [ "Battery" "Meta+B,Battery" "Meta+B,切换电源管理方案" ];
+      "plasmashell"."activate application launcher" =
+        [ "Meta,Meta" "Alt+F1,激活应用程序启动器" ];
       "plasmashell"."activate task manager entry 1" = "Meta+1";
       "plasmashell"."activate task manager entry 10" =
         "none,Meta+0,激活任务管理器条目 10";
@@ -257,7 +261,7 @@ in {
       "plasmashell"."switch to next activity" = "none,,切换到下一个活动";
       "plasmashell"."switch to previous activity" = "none,,切换到上一个活动";
       "plasmashell"."toggle do not disturb" = "none,,切换勿扰模式";
-      "yakuake"."toggle-window-state" = "Alt+E,F12,打开/缩回 Yakuake";
+      "yakuake"."toggle-window-state" = "Alt+E,F12,展开/折叠 Yakuake 窗口";
     };
     configFile = {
       "baloofilerc"."General"."dbVersion" = 2;
@@ -271,10 +275,30 @@ in {
         "默认";
       "kactivitymanagerdrc"."main"."currentActivity" =
         "646008db-b807-4cfb-a6f1-f8aa35c92990";
+      "kcminputrc"."Keyboard"."NumLock" = 0;
       "kcminputrc"."Libinput/1267/12608/ELAN0001:00 04F3:3140 Touchpad"."Enabled" =
         false;
       "kded5rc"."Module-device_automounter"."autoload" = false;
       "kdeglobals"."DirSelect Dialog"."DirSelectDialog Size" = "769,585";
+      "kdeglobals"."KFileDialog Settings"."Allow Expansion" = false;
+      "kdeglobals"."KFileDialog Settings"."Automatically select filename extension" =
+        true;
+      "kdeglobals"."KFileDialog Settings"."Breadcrumb Navigation" = true;
+      "kdeglobals"."KFileDialog Settings"."Decoration position" = 2;
+      "kdeglobals"."KFileDialog Settings"."LocationCombo Completionmode" = 5;
+      "kdeglobals"."KFileDialog Settings"."PathCombo Completionmode" = 5;
+      "kdeglobals"."KFileDialog Settings"."Show Bookmarks" = false;
+      "kdeglobals"."KFileDialog Settings"."Show Full Path" = false;
+      "kdeglobals"."KFileDialog Settings"."Show Inline Previews" = true;
+      "kdeglobals"."KFileDialog Settings"."Show Speedbar" = true;
+      "kdeglobals"."KFileDialog Settings"."Show hidden files" = false;
+      "kdeglobals"."KFileDialog Settings"."Sort by" = "Name";
+      "kdeglobals"."KFileDialog Settings"."Sort directories first" = true;
+      "kdeglobals"."KFileDialog Settings"."Sort hidden files last" = false;
+      "kdeglobals"."KFileDialog Settings"."Sort reversed" = false;
+      "kdeglobals"."KFileDialog Settings"."Speedbar Width" = 89;
+      "kdeglobals"."KFileDialog Settings"."View Style" = "DetailTree";
+      "kdeglobals"."KShortcutsDialog Settings"."Dialog Size" = "600,480";
       "kdeglobals"."WM"."activeBackground" = "49,54,59";
       "kdeglobals"."WM"."activeBlend" = "252,252,252";
       "kdeglobals"."WM"."activeForeground" = "252,252,252";
@@ -288,10 +312,12 @@ in {
       "kwinrc"."NightColor"."Active" = true;
       "kwinrc"."NightColor"."Mode" = "Constant";
       "kwinrc"."Tiling"."padding" = 4;
+      "kwinrc"."Tiling/706f6a44-25e8-5167-afff-1d06ee793c0f"."tiles" = ''
+        {"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}'';
       "kwinrc"."Tiling/864086e2-5565-5170-bd49-b531bda08fb4"."tiles" = ''
         {"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}'';
       "kwinrc"."Wayland"."InputMethod[$e]" =
-        "/run/current-system/sw/share/applications/org.freedesktop.IBus.Panel.Wayland.Gtk3.desktop";
+        "/run/current-system/sw/share/applications/fcitx5-wayland-launcher.desktop";
       "kwinrc"."Xwayland"."Scale" = 1.25;
       "kxkbrc"."Layout"."DisplayNames" = "";
       "kxkbrc"."Layout"."LayoutList" = "us";
