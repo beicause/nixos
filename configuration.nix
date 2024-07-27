@@ -26,11 +26,18 @@
       efiSysMountPoint = "/boot";
     };
   };
+  boot.kernel.sysctl = {
+    "vm.page-cluster" = 0;
+    "vm.extfrag_threshold" = 0;
+    "vm.swappiness" = 100;
+    "kernel.yama.ptrace_scope" = 0;
+  };
 
   zramSwap = {
     enable = true;
     memoryMax = 24 * 1024 * 1024 * 1024;
     algorithm = "zstd";
+    memoryPercent = 100;
   };
 
   # Limit the number of generations to keep
