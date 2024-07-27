@@ -5,15 +5,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  disabledModules = [ "services/networking/v2raya.nix" ];
-  imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    ./v2raya.nix
-  ];
-  services.v2raya = {
-    enable = true;
-    package = pkgs.xray;
-  };
+  imports = [ ./hardware-configuration.nix ];
+  services.v2raya = { enable = true; };
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
   boot.loader = {
@@ -91,14 +84,17 @@
   };
   i18n.defaultLocale = "zh_CN.UTF-8";
   i18n.inputMethod = {
+    type = "fcitx5";
     enable = true;
-    type = "ibus";
-    ibus.engines = with pkgs.ibus-engines; [ libpinyin rime ];
+    fcitx5.addons = with pkgs; [ fcitx5-chinese-addons fcitx5-material-color ];
   };
   services.displayManager = {
     sddm = {
       enable = true;
-      wayland.enable = true;
+      wayland = {
+        enable = true;
+        compositor = "kwin";
+      };
     };
     autoLogin = {
       enable = true;
@@ -137,6 +133,8 @@
     vscode.fhs
     nil
     nixfmt
+    python3
+    rustup
   ];
   nixpkgs.config.allowUnfree = true;
 
