@@ -152,12 +152,11 @@ in
           ms-python.python
           charliermarsh.ruff
           llvm-vs-code-extensions.vscode-clangd
+          vadimcn.vscode-lldb
           rust-lang.rust-analyzer
           redhat.vscode-xml
           redhat.vscode-yaml
           eamodio.gitlens
-          redhat.vscode-xml
-          redhat.vscode-yaml
           tamasfe.even-better-toml
           usernamehw.errorlens
           continue.continue
