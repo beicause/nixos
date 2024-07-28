@@ -4,7 +4,7 @@ in {
   home = {
     inherit username;
     homeDirectory = "/home/${username}";
-    stateVersion = "unstable";
+    stateVersion = "24.05";
   };
   programs.home-manager.enable = true;
   programs.git = {
@@ -22,14 +22,14 @@ in {
       ms-vscode-remote.remote-ssh
       ms-python.python
       charliermarsh.ruff
-      geequlim.godot-tools
+      # geequlim.godot-tools
       llvm-vs-code-extensions.vscode-clangd
       rust-lang.rust-analyzer
       eamodio.gitlens
-      Codeium.codeium
+      # Codeium.codeium
     ];
     userSettings = {
-      "workbench.colorTheme" = "One Dark Pro";
+      "workbench.colorTheme" = "One Dark Pro Darker";
       "editor.fontSize" = 16;
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";

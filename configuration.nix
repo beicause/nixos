@@ -113,6 +113,11 @@
   users.users.lzh = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs;[
+          nil
+    nixfmt-rfc-style
+    vscode
+    ];
   };
   environment.systemPackages = with pkgs; [
     vim
@@ -122,19 +127,8 @@
     ncdu
     kdePackages.yakuake
     firefox
-    nil
-    nixfmt-rfc-style
     python3
-    vscode
-    (vscode-with-extensions.override {
-      vscodeExtensions = with vscode-extensions; [
-        zhuangtongfa.material-theme
-        jnoortheen.nix-ide
-        yzhang.markdown-all-in-one
-        ms-python.python
-        ms-vscode-remote.remote-ssh
-      ];
-    })
+    rustup
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -164,6 +158,6 @@
   nix.settings.substituters =
     [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  system.stateVersion = "unstable"; # Did you read the comment?
+  system.stateVersion = "24.05";
 
 }
