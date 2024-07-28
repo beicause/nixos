@@ -177,6 +177,7 @@ in
     rustup
     clang_18
     clang-tools
+    just
   ];
 
   nixpkgs.config.allowUnfree = true;
