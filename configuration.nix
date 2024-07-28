@@ -151,6 +151,7 @@
     python3
     rustup
     clang_18
+    clang-tools
   ];
 
   nixpkgs.config.allowUnfree = true;

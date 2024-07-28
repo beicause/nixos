@@ -10,12 +10,12 @@ merge
     (merge
       (merge
       {
-        "codeium"."codeium" = vscode-utils.extensionFromVscodeMarketplace {
-          name = "codeium";
-          publisher = "codeium";
-          version = "1.11.6";
-          sha256 = "0x1v81vl9l3lw2ag0n7llqczlmyy78f90hic4pldiqimn9bljkki";
-        };
+        # "codeium"."codeium" = vscode-utils.extensionFromVscodeMarketplace {
+        #   name = "codeium";
+        #   publisher = "codeium";
+        #   version = "1.11.6";
+        #   sha256 = "0x1v81vl9l3lw2ag0n7llqczlmyy78f90hic4pldiqimn9bljkki";
+        # };
         "geequlim"."godot-tools" = vscode-utils.extensionFromVscodeMarketplace {
           name = "godot-tools";
           publisher = "geequlim";

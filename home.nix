@@ -1,10 +1,17 @@
-{ config, pkgs,lib, ... }:
-let username = "lzh";
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  username = "lzh";
   ext = (import ./vscode_ext.nix) {
     pkgs = pkgs;
     lib = lib;
   };
-in {
+in
+{
   home = {
     inherit username;
     homeDirectory = "/home/${username}";
@@ -19,25 +26,25 @@ in {
 
   programs.vscode = {
     enable = true;
-    mutableExtensionsDir=false;
+    mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
-          zhuangtongfa.material-theme
-          jnoortheen.nix-ide
-          yzhang.markdown-all-in-one
-          ms-vscode-remote.remote-ssh
-          ms-python.python
-          charliermarsh.ruff
-          llvm-vs-code-extensions.vscode-clangd
-          rust-lang.rust-analyzer
-          redhat.vscode-xml
-          redhat.vscode-yaml
-          eamodio.gitlens
-          redhat.vscode-xml
-          redhat.vscode-yaml
-          tamasfe.even-better-toml
-          usernamehw.errorlens
-          ext.geequlim.godot-tools
-          ext.codeium.codeium
+      zhuangtongfa.material-theme
+      jnoortheen.nix-ide
+      yzhang.markdown-all-in-one
+      ms-vscode-remote.remote-ssh
+      ms-python.python
+      charliermarsh.ruff
+      llvm-vs-code-extensions.vscode-clangd
+      rust-lang.rust-analyzer
+      redhat.vscode-xml
+      redhat.vscode-yaml
+      eamodio.gitlens
+      redhat.vscode-xml
+      redhat.vscode-yaml
+      tamasfe.even-better-toml
+      usernamehw.errorlens
+      ext.geequlim.godot-tools
+      # ext.codeium.codeium
     ];
     userSettings = {
       "workbench.colorTheme" = "One Dark Pro Darker";
@@ -46,26 +53,33 @@ in {
       "nix.serverPath" = "nil";
       "nix.formatterPath" = "nixfmt";
       "nix.serverSettings" = {
-        "nil" = { "formatting" = { "command" = [ "nixfmt" ]; }; };
+        "nil" = {
+          "formatting" = {
+            "command" = [ "nixfmt" ];
+          };
+        };
       };
       "terminal.integrated.defaultProfile.linux" = "fish";
       "explorer.confirmDelete" = false;
       "git.confirmSync" = false;
       "editor.guides.bracketPairs" = true;
     };
+    keybindings = [
+      {
+        "key" = "ctrl+shift+i";
+        "command" = "-codeium.openCodeiumCommand";
+        "when" = "codeium.commandEnabled && editorTextFocus && !inlineSuggestionsVisible";
+      }
+    ];
   };
 
   programs.plasma = {
     enable = true;
     shortcuts = {
-      "ActivityManager"."switch-to-activity-646008db-b807-4cfb-a6f1-f8aa35c92990" =
-        [ ];
-      "KDE Keyboard Layout Switcher"."Switch keyboard layout to English (US)" =
-        [ ];
-      "KDE Keyboard Layout Switcher"."Switch to Last-Used Keyboard Layout" =
-        "Meta+Alt+L";
-      "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" =
-        "Meta+Alt+K";
+      "ActivityManager"."switch-to-activity-646008db-b807-4cfb-a6f1-f8aa35c92990" = [ ];
+      "KDE Keyboard Layout Switcher"."Switch keyboard layout to English (US)" = [ ];
+      "KDE Keyboard Layout Switcher"."Switch to Last-Used Keyboard Layout" = "Meta+Alt+L";
+      "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" = "Meta+Alt+K";
       "kaccess"."Toggle Screen Reader On and Off" = "Meta+Alt+S";
       "kcm_touchpad"."Disable Touchpad" = "Touchpad Off";
       "kcm_touchpad"."Enable Touchpad" = "Touchpad On";
@@ -87,8 +101,11 @@ in {
       ];
       "kmix"."mute" = "Volume Mute";
       "ksmserver"."Halt Without Confirmation" = "none,,关机 (无需确认)";
-      "ksmserver"."Lock Session" =
-        [ "Meta+L" "Screensaver,Meta+L" "Screensaver,锁定会话" ];
+      "ksmserver"."Lock Session" = [
+        "Meta+L"
+        "Screensaver,Meta+L"
+        "Screensaver,锁定会话"
+      ];
       "ksmserver"."Log Out" = "Ctrl+Alt+Del";
       "ksmserver"."Log Out Without Confirmation" = "none,,注销 (无需确认)";
       "ksmserver"."LogOut" = "none,,注销";
@@ -101,8 +118,11 @@ in {
       "kwin"."Decrease Opacity" = "none,,降低活动窗口不透明度 5%";
       "kwin"."Edit Tiles" = "Meta+T";
       "kwin"."Expose" = "Ctrl+F9";
-      "kwin"."ExposeAll" =
-        [ "Ctrl+F10" "Launch (C),Ctrl+F10" "Launch (C),显示/隐藏窗口平铺 (全部桌面)" ];
+      "kwin"."ExposeAll" = [
+        "Ctrl+F10"
+        "Launch (C),Ctrl+F10"
+        "Launch (C),显示/隐藏窗口平铺 (全部桌面)"
+      ];
       "kwin"."ExposeClass" = "Ctrl+F7";
       "kwin"."ExposeClassCurrentDesktop" = [ ];
       "kwin"."Grid View" = "Meta+G";
@@ -170,10 +190,8 @@ in {
       "kwin"."Walk Through Windows Alternative (Reverse)" = "none,,遍历窗口交替 (反向)";
       "kwin"."Walk Through Windows of Current Application" = "Alt+`";
       "kwin"."Walk Through Windows of Current Application (Reverse)" = "Alt+~";
-      "kwin"."Walk Through Windows of Current Application Alternative" =
-        "none,,遍历当前应用程序窗口交替";
-      "kwin"."Walk Through Windows of Current Application Alternative (Reverse)" =
-        "none,,遍历当前应用程序窗口交替 (反向)";
+      "kwin"."Walk Through Windows of Current Application Alternative" = "none,,遍历当前应用程序窗口交替";
+      "kwin"."Walk Through Windows of Current Application Alternative (Reverse)" = "none,,遍历当前应用程序窗口交替 (反向)";
       "kwin"."Window Above Other Windows" = "none,,窗口置顶";
       "kwin"."Window Below Other Windows" = "none,,窗口置底";
       "kwin"."Window Close" = "Alt+F4";
@@ -248,7 +266,11 @@ in {
       "kwin"."Window to Screen 6" = "none,,移动窗口到屏幕 6";
       "kwin"."Window to Screen 7" = "none,,移动窗口到屏幕 7";
       "kwin"."view_actual_size" = "Meta+0";
-      "kwin"."view_zoom_in" = [ "Meta++" "Meta+=,Meta++" "Meta+=,放大(I)" ];
+      "kwin"."view_zoom_in" = [
+        "Meta++"
+        "Meta+=,Meta++"
+        "Meta+=,放大(I)"
+      ];
       "kwin"."view_zoom_out" = "Meta+-";
       "mediacontrol"."mediavolumedown" = "none,,媒体音量降低";
       "mediacontrol"."mediavolumeup" = "none,,媒体音量提高";
@@ -258,32 +280,29 @@ in {
       "mediacontrol"."playpausemedia" = "Media Play";
       "mediacontrol"."previousmedia" = "Media Previous";
       "mediacontrol"."stopmedia" = "Media Stop";
-      "org_kde_powerdevil"."Decrease Keyboard Brightness" =
-        "Keyboard Brightness Down";
-      "org_kde_powerdevil"."Decrease Screen Brightness" =
-        "Monitor Brightness Down";
-      "org_kde_powerdevil"."Decrease Screen Brightness Small" =
-        "Shift+Monitor Brightness Down";
+      "org_kde_powerdevil"."Decrease Keyboard Brightness" = "Keyboard Brightness Down";
+      "org_kde_powerdevil"."Decrease Screen Brightness" = "Monitor Brightness Down";
+      "org_kde_powerdevil"."Decrease Screen Brightness Small" = "Shift+Monitor Brightness Down";
       "org_kde_powerdevil"."Hibernate" = "Hibernate";
-      "org_kde_powerdevil"."Increase Keyboard Brightness" =
-        "Keyboard Brightness Up";
-      "org_kde_powerdevil"."Increase Screen Brightness" =
-        "Monitor Brightness Up";
-      "org_kde_powerdevil"."Increase Screen Brightness Small" =
-        "Shift+Monitor Brightness Up";
+      "org_kde_powerdevil"."Increase Keyboard Brightness" = "Keyboard Brightness Up";
+      "org_kde_powerdevil"."Increase Screen Brightness" = "Monitor Brightness Up";
+      "org_kde_powerdevil"."Increase Screen Brightness Small" = "Shift+Monitor Brightness Up";
       "org_kde_powerdevil"."PowerDown" = "Power Down";
       "org_kde_powerdevil"."PowerOff" = "Power Off";
       "org_kde_powerdevil"."Sleep" = "Sleep";
-      "org_kde_powerdevil"."Toggle Keyboard Backlight" =
-        "Keyboard Light On/Off";
+      "org_kde_powerdevil"."Toggle Keyboard Backlight" = "Keyboard Light On/Off";
       "org_kde_powerdevil"."Turn Off Screen" = [ ];
-      "org_kde_powerdevil"."powerProfile" =
-        [ "Battery" "Meta+B,Battery" "Meta+B,切换电源管理方案" ];
-      "plasmashell"."activate application launcher" =
-        [ "Meta,Meta" "Alt+F1,激活应用程序启动器" ];
+      "org_kde_powerdevil"."powerProfile" = [
+        "Battery"
+        "Meta+B,Battery"
+        "Meta+B,切换电源管理方案"
+      ];
+      "plasmashell"."activate application launcher" = [
+        "Meta,Meta"
+        "Alt+F1,激活应用程序启动器"
+      ];
       "plasmashell"."activate task manager entry 1" = "Meta+1";
-      "plasmashell"."activate task manager entry 10" =
-        "none,Meta+0,激活任务管理器条目 10";
+      "plasmashell"."activate task manager entry 10" = "none,Meta+0,激活任务管理器条目 10";
       "plasmashell"."activate task manager entry 2" = "Meta+2";
       "plasmashell"."activate task manager entry 3" = "Meta+3";
       "plasmashell"."activate task manager entry 4" = "Meta+4";
@@ -312,24 +331,19 @@ in {
     };
     configFile = {
       "baloofilerc"."General"."dbVersion" = 2;
-      "baloofilerc"."General"."exclude filters" =
-        "*~,*.part,*.o,*.la,*.lo,*.loT,*.moc,moc_*.cpp,qrc_*.cpp,ui_*.h,cmake_install.cmake,CMakeCache.txt,CTestTestfile.cmake,libtool,config.status,confdefs.h,autom4te,conftest,confstat,Makefile.am,*.gcode,.ninja_deps,.ninja_log,build.ninja,*.csproj,*.m4,*.rej,*.gmo,*.pc,*.omf,*.aux,*.tmp,*.po,*.vm*,*.nvram,*.rcore,*.swp,*.swap,lzo,litmain.sh,*.orig,.histfile.*,.xsession-errors*,*.map,*.so,*.a,*.db,*.qrc,*.ini,*.init,*.img,*.vdi,*.vbox*,vbox.log,*.qcow2,*.vmdk,*.vhd,*.vhdx,*.sql,*.sql.gz,*.ytdl,*.tfstate*,*.class,*.pyc,*.pyo,*.elc,*.qmlc,*.jsc,*.fastq,*.fq,*.gb,*.fasta,*.fna,*.gbff,*.faa,po,CVS,.svn,.git,_darcs,.bzr,.hg,CMakeFiles,CMakeTmp,CMakeTmpQmake,.moc,.obj,.pch,.uic,.npm,.yarn,.yarn-cache,__pycache__,node_modules,node_packages,nbproject,.terraform,.venv,venv,core-dumps,lost+found";
+      "baloofilerc"."General"."exclude filters" = "*~,*.part,*.o,*.la,*.lo,*.loT,*.moc,moc_*.cpp,qrc_*.cpp,ui_*.h,cmake_install.cmake,CMakeCache.txt,CTestTestfile.cmake,libtool,config.status,confdefs.h,autom4te,conftest,confstat,Makefile.am,*.gcode,.ninja_deps,.ninja_log,build.ninja,*.csproj,*.m4,*.rej,*.gmo,*.pc,*.omf,*.aux,*.tmp,*.po,*.vm*,*.nvram,*.rcore,*.swp,*.swap,lzo,litmain.sh,*.orig,.histfile.*,.xsession-errors*,*.map,*.so,*.a,*.db,*.qrc,*.ini,*.init,*.img,*.vdi,*.vbox*,vbox.log,*.qcow2,*.vmdk,*.vhd,*.vhdx,*.sql,*.sql.gz,*.ytdl,*.tfstate*,*.class,*.pyc,*.pyo,*.elc,*.qmlc,*.jsc,*.fastq,*.fq,*.gb,*.fasta,*.fna,*.gbff,*.faa,po,CVS,.svn,.git,_darcs,.bzr,.hg,CMakeFiles,CMakeTmp,CMakeTmpQmake,.moc,.obj,.pch,.uic,.npm,.yarn,.yarn-cache,__pycache__,node_modules,node_packages,nbproject,.terraform,.venv,venv,core-dumps,lost+found";
       "baloofilerc"."General"."exclude filters version" = 9;
       "dolphinrc"."General"."ViewPropsTimestamp" = "2024,7,27,2,20,43.802";
       "dolphinrc"."KFileDialog Settings"."Places Icons Auto-resize" = false;
       "dolphinrc"."KFileDialog Settings"."Places Icons Static Size" = 22;
-      "kactivitymanagerdrc"."activities"."646008db-b807-4cfb-a6f1-f8aa35c92990" =
-        "默认";
-      "kactivitymanagerdrc"."main"."currentActivity" =
-        "646008db-b807-4cfb-a6f1-f8aa35c92990";
+      "kactivitymanagerdrc"."activities"."646008db-b807-4cfb-a6f1-f8aa35c92990" = "默认";
+      "kactivitymanagerdrc"."main"."currentActivity" = "646008db-b807-4cfb-a6f1-f8aa35c92990";
       "kcminputrc"."Keyboard"."NumLock" = 0;
-      "kcminputrc"."Libinput/1267/12608/ELAN0001:00 04F3:3140 Touchpad"."Enabled" =
-        false;
+      "kcminputrc"."Libinput/1267/12608/ELAN0001:00 04F3:3140 Touchpad"."Enabled" = false;
       "kded5rc"."Module-device_automounter"."autoload" = false;
       "kdeglobals"."DirSelect Dialog"."DirSelectDialog Size" = "769,585";
       "kdeglobals"."KFileDialog Settings"."Allow Expansion" = false;
-      "kdeglobals"."KFileDialog Settings"."Automatically select filename extension" =
-        true;
+      "kdeglobals"."KFileDialog Settings"."Automatically select filename extension" = true;
       "kdeglobals"."KFileDialog Settings"."Breadcrumb Navigation" = true;
       "kdeglobals"."KFileDialog Settings"."Decoration position" = 2;
       "kdeglobals"."KFileDialog Settings"."LocationCombo Completionmode" = 5;
@@ -359,12 +373,9 @@ in {
       "kwinrc"."NightColor"."Active" = true;
       "kwinrc"."NightColor"."Mode" = "Constant";
       "kwinrc"."Tiling"."padding" = 4;
-      "kwinrc"."Tiling/706f6a44-25e8-5167-afff-1d06ee793c0f"."tiles" = ''
-        {"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}'';
-      "kwinrc"."Tiling/864086e2-5565-5170-bd49-b531bda08fb4"."tiles" = ''
-        {"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}'';
-      "kwinrc"."Wayland"."InputMethod[$e]" =
-        "/run/current-system/sw/share/applications/fcitx5-wayland-launcher.desktop";
+      "kwinrc"."Tiling/706f6a44-25e8-5167-afff-1d06ee793c0f"."tiles" = ''{"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}'';
+      "kwinrc"."Tiling/864086e2-5565-5170-bd49-b531bda08fb4"."tiles" = ''{"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}'';
+      "kwinrc"."Wayland"."InputMethod[$e]" = "/run/current-system/sw/share/applications/fcitx5-wayland-launcher.desktop";
       "kwinrc"."Xwayland"."Scale" = 1.25;
       "kxkbrc"."Layout"."DisplayNames" = "";
       "kxkbrc"."Layout"."LayoutList" = "us";

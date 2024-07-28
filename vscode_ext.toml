@@ -4,9 +4,9 @@ vscode_version = "1.91.1"
 publisher_name = "geequlim"
 extension_name = "godot-tools"
 
-[[extensions]]
-publisher_name = "Codeium"
-extension_name = "codeium"
+# [[extensions]]
+# publisher_name = "Codeium"
+# extension_name = "codeium"
 
 
 # [[extensions]]
