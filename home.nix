@@ -1,5 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs,lib, ... }:
 let username = "lzh";
+  ext = (import ./vscode_ext.nix) {
+    pkgs = pkgs;
+    lib = lib;
+  };
 in {
   home = {
     inherit username;
@@ -15,18 +19,25 @@ in {
 
   programs.vscode = {
     enable = true;
+    mutableExtensionsDir=false;
     extensions = with pkgs.vscode-extensions; [
-      zhuangtongfa.material-theme
-      jnoortheen.nix-ide
-      yzhang.markdown-all-in-one
-      ms-vscode-remote.remote-ssh
-      ms-python.python
-      charliermarsh.ruff
-      # geequlim.godot-tools
-      llvm-vs-code-extensions.vscode-clangd
-      rust-lang.rust-analyzer
-      eamodio.gitlens
-      # Codeium.codeium
+          zhuangtongfa.material-theme
+          jnoortheen.nix-ide
+          yzhang.markdown-all-in-one
+          ms-vscode-remote.remote-ssh
+          ms-python.python
+          charliermarsh.ruff
+          llvm-vs-code-extensions.vscode-clangd
+          rust-lang.rust-analyzer
+          redhat.vscode-xml
+          redhat.vscode-yaml
+          eamodio.gitlens
+          redhat.vscode-xml
+          redhat.vscode-yaml
+          tamasfe.even-better-toml
+          usernamehw.errorlens
+          ext.geequlim.godot-tools
+          ext.codeium.codeium
     ];
     userSettings = {
       "workbench.colorTheme" = "One Dark Pro Darker";

@@ -2,11 +2,17 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [ ./hardware-configuration.nix ];
-  services.v2raya = { enable = true; };
+  services.v2raya = {
+    enable = true;
+  };
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
   boot.loader = {
@@ -61,8 +67,7 @@
   networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable =
-    true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
@@ -83,17 +88,31 @@
   fonts.fontconfig = {
     defaultFonts = {
       emoji = [ "Noto Color Emoji" ];
-      monospace =
-        [ "Noto Sans Mono CJK SC" "Sarasa Mono SC" "DejaVu Sans Mono" ];
-      sansSerif = [ "Noto Sans CJK SC" "Source Han Sans SC" "DejaVu Sans" ];
-      serif = [ "Noto Serif CJK SC" "Source Han Serif SC" "DejaVu Serif" ];
+      monospace = [
+        "Noto Sans Mono CJK SC"
+        "Sarasa Mono SC"
+        "DejaVu Sans Mono"
+      ];
+      sansSerif = [
+        "Noto Sans CJK SC"
+        "Source Han Sans SC"
+        "DejaVu Sans"
+      ];
+      serif = [
+        "Noto Serif CJK SC"
+        "Source Han Serif SC"
+        "DejaVu Serif"
+      ];
     };
   };
   i18n.defaultLocale = "zh_CN.UTF-8";
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
-    fcitx5.addons = with pkgs; [ fcitx5-chinese-addons fcitx5-material-color ];
+    fcitx5.addons = with pkgs; [
+      fcitx5-chinese-addons
+      fcitx5-material-color
+    ];
   };
   services.displayManager = {
     sddm = {
@@ -108,15 +127,17 @@
       user = "lzh";
     };
   };
-  services = { desktopManager.plasma6.enable = true; };
+  services = {
+    desktopManager.plasma6.enable = true;
+  };
   hardware.pulseaudio.enable = true;
   users.users.lzh = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs;[
-          nil
-    nixfmt-rfc-style
-    vscode
+    packages = with pkgs; [
+      nil
+      nixfmt-rfc-style
+      vscode
     ];
   };
   environment.systemPackages = with pkgs; [
@@ -129,14 +150,14 @@
     firefox
     python3
     rustup
+    clang_18
   ];
 
   nixpkgs.config.allowUnfree = true;
   environment.variables.EDITOR = "code --wait";
   services.openssh.enable = true;
   systemd.user.services.xdg-user-dirs_workaround = {
-    description =
-      "(Workaround to https://github.com/NixOS/nixpkgs/issues/222925) User folders update";
+    description = "(Workaround to https://github.com/NixOS/nixpkgs/issues/222925) User folders update";
     documentation = [ "man:xdg-user-dirs-update(1)" ];
     path = [ pkgs.xdg-user-dirs ];
     wantedBy = [ "graphical-session-pre.target" ];
@@ -154,10 +175,14 @@
     PICTURES=Picture
     VIDEOS=Video
   '';
-  programs.fish = { enable = true; };
-  nix.settings.substituters =
-    [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  programs.fish = {
+    enable = true;
+  };
+  nix.settings.substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   system.stateVersion = "24.05";
 
 }

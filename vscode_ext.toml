@@ -1,0 +1,54 @@
+vscode_version = "1.91.1"
+
+[[extensions]]
+publisher_name = "geequlim"
+extension_name = "godot-tools"
+
+[[extensions]]
+publisher_name = "Codeium"
+extension_name = "codeium"
+
+
+# [[extensions]]
+# publisher_name = "zhuangtongfa"
+# extension_name = "material-theme"
+
+# [[extensions]]
+# publisher_name = "jnoortheen"
+# extension_name = "nix-ide"
+
+# [[extensions]]
+# publisher_name = "yzhang"
+# extension_name = "markdown-all-in-one"
+
+# [[extensions]]
+# publisher_name = "ms-vscode-remote"
+# extension_name = "remote-ssh"
+
+# [[extensions]]
+# publisher_name = "ms-python"
+# extension_name = "python"
+
+# [[extensions]]
+# publisher_name = "charliermarsh"
+# extension_name = "ruff"
+
+# [[extensions]]
+# publisher_name = "llvm-vs-code-extensions"
+# extension_name = "vscode-clangd"
+
+# [[extensions]]
+# publisher_name = "rust-lang"
+# extension_name = "rust-analyzer"
+
+# [[extensions]]
+# publisher_name = "redhat"
+# extension_name = "vscode-xml"
+
+# [[extensions]]
+# publisher_name = "redhat"
+# extension_name = "vscode-yaml"
+
+# [[extensions]]
+# publisher_name = "eamodio"
+# extension_name = "gitlens"
