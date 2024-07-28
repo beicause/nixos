@@ -5,13 +5,9 @@ publisher_name = "geequlim"
 extension_name = "godot-tools"
 
 # [[extensions]]
-# publisher_name = "Codeium"
-# extension_name = "codeium"
-
-
-# [[extensions]]
 # publisher_name = "zhuangtongfa"
 # extension_name = "material-theme"
+
 
 # [[extensions]]
 # publisher_name = "jnoortheen"

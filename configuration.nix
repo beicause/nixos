@@ -8,6 +8,12 @@
   pkgs,
   ...
 }:
+let
+  ext = (import ./vscode_ext.nix) {
+    pkgs = pkgs;
+    lib = lib;
+  };
+in
 {
   imports = [ ./hardware-configuration.nix ];
   services.v2raya = {
@@ -137,7 +143,27 @@
     packages = with pkgs; [
       nil
       nixfmt-rfc-style
-      vscode
+      (vscode-with-extensions.override {
+        vscodeExtensions = with vscode-extensions; [
+          zhuangtongfa.material-theme
+          jnoortheen.nix-ide
+          yzhang.markdown-all-in-one
+          ms-vscode-remote.remote-ssh
+          ms-python.python
+          charliermarsh.ruff
+          llvm-vs-code-extensions.vscode-clangd
+          rust-lang.rust-analyzer
+          redhat.vscode-xml
+          redhat.vscode-yaml
+          eamodio.gitlens
+          redhat.vscode-xml
+          redhat.vscode-yaml
+          tamasfe.even-better-toml
+          usernamehw.errorlens
+          continue.continue
+          ext.geequlim.godot-tools
+        ];
+      })
     ];
   };
   environment.systemPackages = with pkgs; [

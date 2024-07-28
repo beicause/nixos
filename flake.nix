@@ -15,9 +15,17 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, plasma-manager, ... }:
-    let system = "x86_64-linux";
-    in {
+  outputs =
+    inputs@{
+      nixpkgs,
+      home-manager,
+      plasma-manager,
+      ...
+    }:
+    let
+      system = "x86_64-linux";
+    in
+    {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           inherit system;
