@@ -202,8 +202,9 @@ in
     PICTURES=Picture
     VIDEOS=Video
   '';
-  programs.fish = {
-    enable = true;
+  programs = {
+    fish.enable = true;
+    direnv.enable = true;
   };
   nix.settings.substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
   nix.settings.experimental-features = [
