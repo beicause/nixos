@@ -7,6 +7,42 @@ in {
     stateVersion = "unstable";
   };
   programs.home-manager.enable = true;
+  programs.git = {
+    enable = true;
+    userName = "Luo Zhihao";
+    userEmail = "luo_zhihao_jx@qq.com";
+  };
+
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      zhuangtongfa.material-theme
+      jnoortheen.nix-ide
+      yzhang.markdown-all-in-one
+      ms-vscode-remote.remote-ssh
+      ms-python.python
+      charliermarsh.ruff
+      geequlim.godot-tools
+      llvm-vs-code-extensions.vscode-clangd
+      rust-lang.rust-analyzer
+      eamodio.gitlens
+      Codeium.codeium
+    ];
+    userSettings = {
+      "workbench.colorTheme" = "One Dark Pro";
+      "editor.fontSize" = 16;
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nil";
+      "nix.formatterPath" = "nixfmt";
+      "nix.serverSettings" = {
+        "nil" = { "formatting" = { "command" = [ "nixfmt" ]; }; };
+      };
+      "terminal.integrated.defaultProfile.linux" = "fish";
+      "explorer.confirmDelete" = false;
+      "git.confirmSync" = false;
+      "editor.guides.bracketPairs" = true;
+    };
+  };
 
   programs.plasma = {
     enable = true;

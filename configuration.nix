@@ -113,7 +113,6 @@
   users.users.lzh = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [ ];
   };
   environment.systemPackages = with pkgs; [
     vim
@@ -123,24 +122,44 @@
     ncdu
     kdePackages.yakuake
     firefox
-    vscode.fhs
     nil
-    nixfmt
+    nixfmt-rfc-style
     python3
-    scons
-    rustup
-    nodejs_22
-    clang_18
-    clang-tools
-    android-tools
-    cargo-ndk
-    jdk17
+    vscode
+    (vscode-with-extensions.override {
+      vscodeExtensions = with vscode-extensions; [
+        zhuangtongfa.material-theme
+        jnoortheen.nix-ide
+        yzhang.markdown-all-in-one
+        ms-python.python
+        ms-vscode-remote.remote-ssh
+      ];
+    })
   ];
-  nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.config.allowUnfree = true;
   environment.variables.EDITOR = "code --wait";
   services.openssh.enable = true;
-
+  systemd.user.services.xdg-user-dirs_workaround = {
+    description =
+      "(Workaround to https://github.com/NixOS/nixpkgs/issues/222925) User folders update";
+    documentation = [ "man:xdg-user-dirs-update(1)" ];
+    path = [ pkgs.xdg-user-dirs ];
+    wantedBy = [ "graphical-session-pre.target" ];
+    unitConfig.RequiresMountsFor = "/home";
+    serviceConfig.Type = "oneshot";
+    script = "${pkgs.bash}/bin/xdg-user-dirs-update";
+  };
+  environment.etc."xdg/user-dirs.defaults".text = ''
+    DESKTOP=Desktop
+    DOWNLOAD=Download
+    TEMPLATES=Template
+    PUBLICSHARE=Public
+    DOCUMENTS=Document
+    MUSIC=Music
+    PICTURES=Picture
+    VIDEOS=Video
+  '';
   programs.fish = { enable = true; };
   nix.settings.substituters =
     [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];

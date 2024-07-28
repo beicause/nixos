@@ -19,16 +19,22 @@
     in {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
+          inherit system;
           modules = [ ./configuration.nix ];
         };
-        lzh = nixpkgs.lib.nixosSystem {
+        hostname = nixpkgs.lib.nixosSystem {
+          inherit system;
           modules = [
-            inputs.plasma-manager.homeManagerModules.plasma-manager
             ./configuration.nix
-            ./home.nix
+            plasma-manager.homeManagerModules.plasma-manager
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.lzh = import ./home.nix;
+            }
           ];
         };
-
       };
     };
 }
