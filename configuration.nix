@@ -47,9 +47,9 @@ in
 
   zramSwap = {
     enable = true;
-    memoryMax = 24 * 1024 * 1024 * 1024;
+    memoryMax = 32 * 1024 * 1024 * 1024;
     algorithm = "zstd";
-    memoryPercent = 100;
+    memoryPercent = 200;
   };
 
   # Limit the number of generations to keep
@@ -150,7 +150,7 @@ in
           yzhang.markdown-all-in-one
           ms-vscode-remote.remote-ssh
           ms-python.python
-          charliermarsh.ruff
+          ms-python.black-formatter
           llvm-vs-code-extensions.vscode-clangd
           vadimcn.vscode-lldb
           rust-lang.rust-analyzer
