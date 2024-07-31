@@ -42,7 +42,7 @@ in
     "vm.page-cluster" = 0;
     "vm.extfrag_threshold" = 0;
     "vm.swappiness" = 100;
-    "kernel.yama.ptrace_scope" = 0;
+    # "kernel.yama.ptrace_scope" = 0;
   };
 
   zramSwap = {
@@ -161,8 +161,10 @@ in
           usernamehw.errorlens
           continue.continue
           ext.geequlim.godot-tools
+          ms-vscode.hexeditor
         ];
       })
+      blender
     ];
   };
   environment.systemPackages = with pkgs; [
