@@ -165,6 +165,9 @@ in
         ];
       })
       blender
+      gimp
+      inkscape
+      vlc
     ];
   };
   environment.systemPackages = with pkgs; [
