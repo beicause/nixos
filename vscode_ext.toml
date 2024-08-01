@@ -4,6 +4,10 @@ vscode_version = "1.91.1"
 publisher_name = "geequlim"
 extension_name = "godot-tools"
 
+[[extensions]]
+publisher_name = "Grafana"
+extension_name = "vscode-jsonnet"
+
 # [[extensions]]
 # publisher_name = "zhuangtongfa"
 # extension_name = "material-theme"

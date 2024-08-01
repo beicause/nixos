@@ -161,6 +161,7 @@ in
           usernamehw.errorlens
           continue.continue
           ext.geequlim.godot-tools
+          ext.grafana.vscode-jsonnet
           ms-vscode.hexeditor
         ];
       })
