@@ -169,6 +169,7 @@ in
       gimp
       inkscape
       vlc
+      ollama
     ];
   };
   environment.systemPackages = with pkgs; [
@@ -184,6 +185,8 @@ in
     clang_18
     clang-tools
     just
+    zip
+    unzip
   ];
 
   nixpkgs.config.allowUnfree = true;

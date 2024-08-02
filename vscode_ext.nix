@@ -27,3 +27,4 @@ merge
       (lib.attrsets.optionalAttrs (isLinux && (isAarch32 || isAarch64)) { }))
     (lib.attrsets.optionalAttrs (isDarwin && (isi686 || isx86_64)) { }))
   (lib.attrsets.optionalAttrs (isDarwin && (isAarch32 || isAarch64)) { })
+
