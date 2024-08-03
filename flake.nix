@@ -12,7 +12,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
+    gd-fhs.url = "/home/lzh/Document/godot";
   };
 
   outputs =
@@ -29,6 +30,9 @@
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = {
+            inherit inputs;
+          };
           modules = [
             ./configuration.nix
             home-manager.nixosModules.home-manager

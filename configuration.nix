@@ -6,6 +6,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -163,13 +164,14 @@ in
           ext.geequlim.godot-tools
           ext.grafana.vscode-jsonnet
           ms-vscode.hexeditor
+          github.vscode-github-actions
         ];
       })
       blender
       gimp
       inkscape
       vlc
-      ollama
+      inputs.gd-fhs.packages."${pkgs.system}".default
     ];
   };
   environment.systemPackages = with pkgs; [
