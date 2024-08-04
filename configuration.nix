@@ -141,38 +141,43 @@ in
   users.users.lzh = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      nil
-      nixfmt-rfc-style
-      (vscode-with-extensions.override {
-        vscodeExtensions = with vscode-extensions; [
-          zhuangtongfa.material-theme
-          jnoortheen.nix-ide
-          yzhang.markdown-all-in-one
-          ms-vscode-remote.remote-ssh
-          ms-python.python
-          ms-python.black-formatter
-          llvm-vs-code-extensions.vscode-clangd
-          vadimcn.vscode-lldb
-          rust-lang.rust-analyzer
-          redhat.vscode-xml
-          redhat.vscode-yaml
-          eamodio.gitlens
-          tamasfe.even-better-toml
-          usernamehw.errorlens
-          continue.continue
-          ext.geequlim.godot-tools
-          ext.grafana.vscode-jsonnet
-          ms-vscode.hexeditor
-          github.vscode-github-actions
-        ];
-      })
-      blender
-      gimp
-      inkscape
-      vlc
-      inputs.gd-fhs.packages."${pkgs.system}".default
-    ];
+    packages =
+      with pkgs;
+      [
+        nil
+        nixfmt-rfc-style
+        (vscode-with-extensions.override {
+          vscodeExtensions = with vscode-extensions; [
+            zhuangtongfa.material-theme
+            jnoortheen.nix-ide
+            yzhang.markdown-all-in-one
+            ms-vscode-remote.remote-ssh
+            ms-python.python
+            ms-python.black-formatter
+            llvm-vs-code-extensions.vscode-clangd
+            vadimcn.vscode-lldb
+            rust-lang.rust-analyzer
+            redhat.vscode-xml
+            redhat.vscode-yaml
+            eamodio.gitlens
+            tamasfe.even-better-toml
+            usernamehw.errorlens
+            continue.continue
+            ext.geequlim.godot-tools
+            ext.grafana.vscode-jsonnet
+            ms-vscode.hexeditor
+            github.vscode-github-actions
+          ];
+        })
+        blender
+        gimp
+        inkscape
+        vlc
+      ]
+      ++ (with inputs.gdenv.packages."${pkgs.system}"; [
+        gdenv
+        godot
+      ]);
   };
   environment.systemPackages = with pkgs; [
     vim
@@ -189,6 +194,8 @@ in
     just
     zip
     unzip
+    gnumake
+    cmake
   ];
 
   nixpkgs.config.allowUnfree = true;

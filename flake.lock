@@ -1,21 +1,20 @@
 {
   "nodes": {
-    "gd-fhs": {
+    "gdenv": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1722708387,
-        "narHash": "sha256-RE0nep7P0rfoQ4yo4SiwZiTemPhD47gl+2P1qAF88jA=",
-        "ref": "refs/heads/custom",
-        "rev": "472bd97c60164a522db020b03aaa8018469853b2",
-        "revCount": 66001,
-        "type": "git",
-        "url": "file:///home/lzh/Document/godot"
+        "lastModified": 1,
+        "narHash": "sha256-hLDpBC6YV+aey05lQDRJ26XSWwutGmpeJ8z0jubLfB8=",
+        "path": "/nix/store/h93cxn2g4ykwjd895p46s5sbss3pwh25-source/gdenv",
+        "type": "path"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/lzh/Document/godot"
+        "path": "/nix/store/h93cxn2g4ykwjd895p46s5sbss3pwh25-source/gdenv",
+        "type": "path"
       }
     },
     "home-manager": {
@@ -39,22 +38,6 @@
       }
     },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1721924956,
-        "narHash": "sha256-Sb1jlyRO+N8jBXEX9Pg9Z1Qb8Bw9QyOgLDNMEpmjZ2M=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "5ad6a14c6bf098e98800b091668718c336effc95",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
       "locked": {
         "lastModified": 1722421184,
         "narHash": "sha256-/DJBI6trCeVnasdjUo9pbnodCLZcFqnVZiLUfqLH4jA=",
@@ -95,9 +78,9 @@
     },
     "root": {
       "inputs": {
-        "gd-fhs": "gd-fhs",
+        "gdenv": "gdenv",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "plasma-manager": "plasma-manager"
       }
     }

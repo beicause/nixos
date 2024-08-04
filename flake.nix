@@ -12,8 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-
-    gd-fhs.url = "/home/lzh/Document/godot";
+    gdenv = {
+      url = "./gdenv";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

@@ -68,6 +68,7 @@ in
   #   ];
   # };
 
+  # nix run github:nix-community/plasma-manager
   programs.plasma = {
     enable = true;
     shortcuts = {

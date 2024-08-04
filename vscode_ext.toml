@@ -1,3 +1,4 @@
+# ~/.cargo/bin/nix4vscode ./vscode_ext.toml > ./vscode_ext.nix
 vscode_version = "1.91.1"
 
 [[extensions]]
