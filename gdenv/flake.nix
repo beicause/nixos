@@ -33,18 +33,17 @@
         # sdkmanager --sdk_root=<android_sdk_path> --licenses
         # sdkmanager --sdk_root=<android_sdk_path> "platform-tools" "build-tools;34.0.0" "platforms;android-34" "cmdline-tools;latest" "cmake;3.10.2.4988404" "ndk;23.2.8568313"
       ];
-      shell_name = "gdenv";
       extra_envs = {
         ANDROID_HOME = "/home/lzh/Android/";
         ANDROID_NDK_HOME = extra_envs.ANDROID_HOME + "ndk/23.2.8568313/";
-        NIX_SHELL_NAME = shell_name;
+        NIX_SHELL_NAME = "gd-fhs";
       };
       fhs_env =
-        script:
+        { name, script }:
         (pkgs.buildFHSUserEnv (
           pkgs.appimageTools.defaultFhsEnvArgs
           // {
-            name = shell_name;
+            name = name;
             targetPkgs = pkgs: deps;
             profile = ''
               export IN_NIX_SHELL=1;
@@ -62,8 +61,18 @@
     in
     {
       packages."${system}" = {
-        gdenv = (fhs_env "fish");
-        godot = (fhs_env "/home/lzh/Document/godot/bin/godot.linuxbsd.editor.x86_64.llvm");
+        gdenv = (
+          fhs_env {
+            name = "gdenv";
+            script = "fish";
+          }
+        );
+        godot = (
+          fhs_env {
+            name = "godot";
+            script = "/home/lzh/Document/godot/bin/godot.linuxbsd.editor.x86_64.llvm";
+          }
+        );
       };
     };
 }
