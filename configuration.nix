@@ -153,7 +153,7 @@ in
             yzhang.markdown-all-in-one
             ms-vscode-remote.remote-ssh
             ms-python.python
-            ms-python.black-formatter
+            vscode-extensions.charliermarsh.ruff
             llvm-vs-code-extensions.vscode-clangd
             vadimcn.vscode-lldb
             rust-lang.rust-analyzer
