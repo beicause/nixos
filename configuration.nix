@@ -157,10 +157,11 @@ in
             llvm-vs-code-extensions.vscode-clangd
             vadimcn.vscode-lldb
             rust-lang.rust-analyzer
-            redhat.vscode-xml
             redhat.vscode-yaml
+            esbenp.prettier-vscode
             eamodio.gitlens
             tamasfe.even-better-toml
+            dotjoshjohnson.xml
             usernamehw.errorlens
             continue.continue
             ext.geequlim.godot-tools
@@ -196,6 +197,7 @@ in
     unzip
     gnumake
     cmake
+    nodejs_22
   ];
 
   nixpkgs.config.allowUnfree = true;
