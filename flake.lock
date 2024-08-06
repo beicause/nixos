@@ -9,11 +9,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-Nj93WUpU+m7aRqqjFLTo6keDkFEEYj3OJ9Zglin6Tgs=",
-        "path": "/nix/store/iazz40xg0pzhlqnp55d9z7547hdkc94b-source/gdenv",
+        "path": "/nix/store/fxyqg0yjsmff83nimf3xxz9cgc22awl6-source/gdenv",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/iazz40xg0pzhlqnp55d9z7547hdkc94b-source/gdenv",
+        "path": "/nix/store/fxyqg0yjsmff83nimf3xxz9cgc22awl6-source/gdenv",
         "type": "path"
       }
     },
