@@ -191,6 +191,7 @@ in
     python3
     rustup
     clang_18
+    lld_18
     clang-tools
     just
     zip

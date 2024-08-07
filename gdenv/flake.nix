@@ -17,6 +17,7 @@
         pkg-config
         autoPatchelfHook
         clang_18
+        lld_18
         mold
         python3
         scons
