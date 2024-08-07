@@ -192,6 +192,7 @@ in
     rustup
     clang_18
     lld_18
+    llvm_18
     clang-tools
     just
     zip
