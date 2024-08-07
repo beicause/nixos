@@ -168,6 +168,7 @@ in
             ext.grafana.vscode-jsonnet
             ms-vscode.hexeditor
             github.vscode-github-actions
+            ms-vscode.cmake-tools
           ];
         })
         blender
