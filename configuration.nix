@@ -201,6 +201,7 @@ in
     gnumake
     cmake
     nodejs_22
+    git-lfs
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -229,7 +230,6 @@ in
     fish.enable = true;
     direnv.enable = true;
     nix-ld.enable = true;
-    git.lfs.enable = true;
   };
   nix.settings.substituters = [ "https://mirror.sjtu.edu.cn/nix-channels/store" ];
   nix.settings.experimental-features = [
