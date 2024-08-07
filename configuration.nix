@@ -175,6 +175,7 @@ in
         gimp
         inkscape
         vlc
+        sqlitebrowser
       ]
       ++ (with inputs.gdenv.packages."${pkgs.system}"; [
         gdenv
@@ -202,6 +203,7 @@ in
     cmake
     nodejs_22
     git-lfs
+    sqlite
   ];
 
   nixpkgs.config.allowUnfree = true;
